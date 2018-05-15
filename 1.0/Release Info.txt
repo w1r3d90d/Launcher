@@ -1,0 +1,11 @@
+Project: Launcher
+Description: An application launcher with graphical button interface
+Release: 1.0
+Auther: Brian Downer
+Email: github@briandowner.com
+
+This is the inital release of the project.  
+There have been numorus previous versions but this is the first that I feel is worthy of sharing. 
+See the included Demo.jpg to see what it should look like.
+The Launcher creates upto 4 rows containing 9 buttons each.  It is very easy to expand this if you wish to do so.
+The buttons are 128 pixles square are are generated from the config.ini file......sort of.  More on this later.
