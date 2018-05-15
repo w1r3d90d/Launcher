@@ -2,6 +2,10 @@
 #Singleinstance force
 SetWorkingDir %A_ScriptDir%
 
+;;;;;  THIS VERSION IS OPTIMIZED FOR 1920x1080 RESOLUTION
+;;;;;  2018 BY BRIAN DOWNER
+;;;;;  https://github.com/w1r3d90d/Launcher
+
 Gosub, PreCheck
 
 inifile = config.ini
