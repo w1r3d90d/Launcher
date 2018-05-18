@@ -8,6 +8,60 @@ This is the initial release of the project.
 I apologize for having writing this in AHK.  A future version may be in a different language.
 There have been numerous previous versions but this is the first that I feel is worthy of sharing. 
 See the included Demo.jpg to see what it should look like.
-The Launcher creates upto 4 rows containing 9 buttons each.  It is very easy to expand this if you wish to do so.
-The buttons are 128 pixels square and are generated from the config.ini file......sort of.  More on this later.
+The Launcher creates upto 4 rows containing 9 buttons each.  It is very easy to expand this if you wish to do so. The buttons are 128 pixels square and are generated from the config.ini file......sort of.  More on this later.
+
 A user simply clicks on the button and application will launch.  This is an improved method from just having single click shortcuts on the desktop because no matter what you do, no matter how advanced you tech skills are, you just cannot control those icons on the desktop.  I've seen students copy/paste a single shortcut hundreds of times filling the entire desktop, renaming shortcuts to inappropriate words or phrases, deleting shortcuts, changing the icon on the shortcut, or changing what the shortcut does.  I've fought this battle for years and I've tried it all.  DeepFreeze, denying write permissions to students, copying a new fresh copy of the shortcuts on login, etc.  Every method I have come up with had its drawbacks.  There was always a way it either was too restrictive or didn't work as well as I wanted.
+
+How To Use
+Directory structure:
+The “Launcher” needs to be located at “C:\Resources\Launcher”
+Inside the Launcher folder should be both an “audio” and “icons” folder
+In the root of the Launcher folder should be “config.ini” and  “Launcher.exe”
+
+Customizing:
+Edit the config.ini to your liking.
+
+All entries need to be in sequence
+[Shortcut1]
+
+Names look better in CAPS
+Name="CHROME"
+
+This is the type of app
+Type="Internet Browser"
+
+
+The root directory where the following exe can be found.
+Location="C:\Program Files (x86)\Google\Chrome\Application\"
+
+The .exe,cmd,bat,lnk, etc for the app
+EXE=chrome.exe
+
+
+ If any of the apps require command line parameter
+Parameters=
+
+
+The exact path to the .png icon for the app
+Icon=C:\Resources\Launcher\Icons\chrome.png
+
+
+If the app requires a lower standard resolution you can set “640”,”800”, or “1024” here. Otherwise it should be set to “Native”.
+Resolution=1024
+
+
+If you would like to prompt the user for the option to read the manual prior to launching an app provide it’s exact path here.  Otherwise it should be set to “NULL”
+Manual="C:\OldGames\Castle of Dr. Brain\Manual.pdf"
+
+
+You’ll need to generate the “Launcher.cfg” file.  This file is a temporary file that is included in the compiling of “Launcher.exe”.  It contains the code of all the actions of each item in the config.ini that each button will perform.  I’m looking for a way to forgo this set in future versions.  At this point wif you have not already done so go ahead and install AHK.
+
+Once you have the config.ini all setup and free of errors and located at “C:\Resources\Launcher\config.ini” double clicking on “LauncherCFG_Gen.ahk” will generate “C:\Resources\Launcher\Launcher.cfg”
+
+Now with that open Ahk2Exe and drag “Launcher.ahk” on to its window.  Then drag the “Launcher.ico” as well
+Click “> Convert <” and you should now have a “Launcher.exe” in the same folder where “Launcher.ahk” is located.  Move “Launcher.exe” to “C:\Resources\Launcher\Launcher.exe”
+
+All Set.  Run “Launcher.exe” and you should now see your customized Launcher.  I suggest creating a local policy user login entry that loads the Launcher.exe.
+
+
+If you have any trouble with this project feel free to email be at github@briandowner.com or just check out the AHK forums at https://autohotkey.com/boards/ They are very helpful.  
