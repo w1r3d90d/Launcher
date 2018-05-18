@@ -1,2 +1,6 @@
 # Launcher
-An application launcher with nice graphical button interface.
+Project: Launcher
+Description: An application launcher with graphical button interface
+Release: 1.0
+Author: Brian Downer
+Email: github@briandowner.com
