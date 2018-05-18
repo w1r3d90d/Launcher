@@ -27,7 +27,7 @@ IniRead, ShortcutEXE, %inifile%, Shortcut%A_Index%, EXE
 IniRead, ShortcutParameters, %inifile%, Shortcut%A_Index%, Parameters
 IniRead, ShortcutIcon, %inifile%, Shortcut%A_Index%, Icon
 IniRead, ShortcutResolution, %inifile%, Shortcut%A_Index%, Resolution
-
+IniRead, ShortcutManual, %inifile%, Shortcut%A_Index%, Manual
 
 ;BEGIN 640 RESOLUTION
 IfEqual, ShortcutResolution, 640
@@ -47,11 +47,16 @@ else
 IfExist, %ShortcutLocation%%ShortcutEXE%
 	{
 	SoundPlay, C:\Resources\Launcher\audio\click.wav
-	Original_Height:= A_ScreenHeight
-	Original_Width := A_ScreenWidth
-	Runwait, C:\Resources\Launcher\QRes.exe /X:640 /Y:480 /C:32,,Hide
-	RunWait, %ShortcutLocation%%ShortcutEXE% %ShortcutParameters%,,Max
-	Runwait, C:\Resources\Launcher\QRes.exe /X:`%Original_Width`% /Y:`%Original_Height`% /C:32,,Hide
+	IfExist, %ShortcutManual%
+		MsgBox, 52, Read The Manual, Do you want to read the Manual for this %ShortcutType%?,60
+			IfMsgBox Yes
+				Run, %ShortcutManual%
+			Else
+				{			
+				ChangeResolution(32,640,480,60)
+				RunWait, %ShortcutLocation%%ShortcutEXE% %ShortcutParameters%,,Max
+				ChangeResolution(32,Original_Width,Original_Height,60)
+				}
 	}
 else
 	MsgBox, 48, Error, Sorry`, %ShortcutName% is missing.,60
@@ -79,11 +84,16 @@ else
 IfExist, %ShortcutLocation%%ShortcutEXE%
 	{
 	SoundPlay, C:\Resources\Launcher\audio\click.wav
-	Original_Height:= A_ScreenHeight
-	Original_Width := A_ScreenWidth
-	Runwait, C:\Resources\Launcher\QRes.exe /X:800 /Y:600 /C:32,,Hide
-	RunWait, %ShortcutLocation%%ShortcutEXE% %ShortcutParameters%,,Max
-	Runwait, C:\Resources\Launcher\QRes.exe /X:`%Original_Width`% /Y:`%Original_Height`% /C:32,,Hide
+	IfExist, %ShortcutManual%
+		MsgBox, 52, Read The Manual, Do you want to read the Manual for this %ShortcutType%?,60
+			IfMsgBox Yes
+				Run, %ShortcutManual%
+			Else
+				{
+				ChangeResolution(32,800,600,60)
+				RunWait, %ShortcutLocation%%ShortcutEXE% %ShortcutParameters%,,Max
+				ChangeResolution(32,Original_Width,Original_Height,60)
+				}			
 	}
 else
 	MsgBox, 48, Error, Sorry`, %ShortcutName% is missing.,60
@@ -112,11 +122,16 @@ else
 IfExist, %ShortcutLocation%%ShortcutEXE%
 	{
 	SoundPlay, C:\Resources\Launcher\audio\click.wav
-	Original_Height:= A_ScreenHeight
-	Original_Width := A_ScreenWidth
-	Runwait, C:\Resources\Launcher\QRes.exe /X:1024 /Y:768 /C:32,,Hide
-	RunWait, %ShortcutLocation%%ShortcutEXE% %ShortcutParameters%,,Max
-	Runwait, C:\Resources\Launcher\QRes.exe /X:`%Original_Width`% /Y:`%Original_Height`% /C:32,,Hide
+	IfExist, %ShortcutManual%
+		MsgBox, 52, Read The Manual, Do you want to read the Manual for this %ShortcutType%?,60
+			IfMsgBox Yes
+				Run, %ShortcutManual%
+			Else
+				{			
+				ChangeResolution(32,1024,768,60)
+				RunWait, %ShortcutLocation%%ShortcutEXE% %ShortcutParameters%,,Max
+				ChangeResolution(32,Original_Width,Original_Height,60)
+				}
 	}
 else
 	MsgBox, 48, Error, Sorry`, %ShortcutName% is missing.,60
@@ -145,8 +160,15 @@ else
 {
 IfExist, %ShortcutLocation%%ShortcutEXE%
 	{
-	SoundPlay, C:\Resources\Launcher\audio\click.wav
-	Run, %ShortcutLocation%%ShortcutEXE% %ShortcutParameters%,,Max
+		IfExist, %ShortcutManual%
+		MsgBox, 52, Read The Manual, Do you want to read the Manual for this %ShortcutType%?,60
+			IfMsgBox Yes
+				Run, %ShortcutManual%
+			Else 	
+				{
+				SoundPlay, C:\Resources\Launcher\audio\click.wav
+				Run, %ShortcutLocation%%ShortcutEXE% %ShortcutParameters%,,Max
+				}
 	}
 else
 	MsgBox, 48, Error, Sorry`, %ShortcutName% is missing.,60
@@ -177,4 +199,5 @@ IfNotExist, C:\Resources\Launcher\Icons
 FileCreateDir, C:\Resources\Launcher\Icons
 
 Return
+
 

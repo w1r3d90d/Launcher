@@ -13,14 +13,28 @@ ShortcutIconOverlay = C:\Resources\Launcher\Icons\ButtonOverlay.png
 
 ButtonSize=128
 Spacing = 64
-TotalAreaWidth := (ButtonSize * 9) + (Spacing * 9)
+TotalAreaWidth := (ButtonSize * 9) + (Spacing * 10)
 ButtonTextPOSv := (ButtonSize - 14)
 FONTSIZE = s8
+Original_Height:= A_ScreenHeight
+Original_Width:= A_ScreenWidth
 
 FileRead, Config_raw, %inifile%
 StringReplace, OutVar, Config_raw, [, [, UseErrorLevel
 TotalIcons:=Errorlevel - 1
 
+ChangeResolution( cD, sW, sH, rR ) {
+  VarSetCapacity(dM,156,0), NumPut(156,2,&dM,36)
+  DllCall( "EnumDisplaySettingsA", UInt,0, UInt,-1, UInt,&dM ), 
+  NumPut(0x5c0000,dM,40)
+  NumPut(cD,dM,104), NumPut(sW,dM,108), NumPut(sH,dM,112), NumPut(rR,dM,120)
+  Return DllCall( "ChangeDisplaySettingsA", UInt,&dM, UInt,0 )
+}
+
+if (GetKeyState("CapsLock", "T") = 1)
+	{
+	ChangeResolution(32,1920,1080,60) 
+	}
 
 Loop %TotalIcons%
 {
@@ -43,6 +57,7 @@ Gui, %A_Index%:Add, Picture, vGUI%A_Index% gShortcut%A_Index% x0 y0 w%ButtonSize
 Gui, %A_Index%:Add, Picture, x0 y0 w%ButtonSize% h%ButtonSize% +BackgroundTrans, %ShortcutIconOverlay%
 Gui, %A_Index%:Add, Text, w%ButtonSize% +Center BackgroundTrans cFFFFFF x0 y%ButtonTextPOSv% ,%ShortcutName%
 Gui %A_Index%:-Caption -Border
+
 if ( A_Index -le 9 )
 {
 row1 := Ceil(ButtonSize + (Spacing))
@@ -78,4 +93,6 @@ Return
 ^F9::ExitApp
 
 
+
 #Include C:\Resources\Launcher\Launcher.cfg
+
