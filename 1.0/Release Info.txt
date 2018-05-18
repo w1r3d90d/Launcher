@@ -30,25 +30,20 @@ Name="CHROME"
 This is the type of app
 Type="Internet Browser"
 
-
 The root directory where the following exe can be found.
 Location="C:\Program Files (x86)\Google\Chrome\Application\"
 
 The .exe,cmd,bat,lnk, etc for the app
 EXE=chrome.exe
 
-
- If any of the apps require command line parameter
+If any of the apps require command line parameter
 Parameters=
-
 
 The exact path to the .png icon for the app
 Icon=C:\Resources\Launcher\Icons\chrome.png
 
-
 If the app requires a lower standard resolution you can set “640”,”800”, or “1024” here. Otherwise it should be set to “Native”.
 Resolution=1024
-
 
 If you would like to prompt the user for the option to read the manual prior to launching an app provide it’s exact path here.  Otherwise it should be set to “NULL”
 Manual="C:\OldGames\Castle of Dr. Brain\Manual.pdf"
