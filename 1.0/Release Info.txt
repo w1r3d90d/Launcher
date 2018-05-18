@@ -1,11 +1,13 @@
 Project: Launcher
 Description: An application launcher with graphical button interface
 Release: 1.0
-Auther: Brian Downer
+Author: Brian Downer
 Email: github@briandowner.com
 
-This is the inital release of the project.  
-There have been numorus previous versions but this is the first that I feel is worthy of sharing. 
+This is the initial release of the project.  
+I apologize for having writing this in AHK.  A future version may be in a different language.
+There have been numerous previous versions but this is the first that I feel is worthy of sharing. 
 See the included Demo.jpg to see what it should look like.
 The Launcher creates upto 4 rows containing 9 buttons each.  It is very easy to expand this if you wish to do so.
-The buttons are 128 pixles square are are generated from the config.ini file......sort of.  More on this later.
+The buttons are 128 pixels square and are generated from the config.ini file......sort of.  More on this later.
+A user simply clicks on the button and application will launch.  This is an improved method from just having single click shortcuts on the desktop because no matter what you do, no matter how advanced you tech skills are, you just cannot control those icons on the desktop.  I've seen students copy/paste a single shortcut hundreds of times filling the entire desktop, renaming shortcuts to inappropriate words or phrases, deleting shortcuts, changing the icon on the shortcut, or changing what the shortcut does.  I've fought this battle for years and I've tried it all.  DeepFreeze, denying write permissions to students, copying a new fresh copy of the shortcuts on login, etc.  Every method I have come up with had its drawbacks.  There was always a way it either was too restrictive or didn't work as well as I wanted.
