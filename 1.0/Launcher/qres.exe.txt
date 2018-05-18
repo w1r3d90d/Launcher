@@ -1,3 +1,0 @@
-Get QRes.exe from:
-http://www.majorgeeks.com/files/details/qres.html
-Place it in the Launcher folder
